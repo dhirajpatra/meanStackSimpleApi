@@ -1,0 +1,27 @@
+{
+  "name": "simpleapi",
+  "version": "1.0.0",
+  "description": "simple api with mongodb and node js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+ "repository": {
+    "type": "git",
+    "url": "https://github.com/dhirajpatra/meanStackSimpleApi.git"
+  },
+  "keywords": [
+    "Node.js",
+    "mongoDb",
+    "Express",
+    "Angularjs",
+    "MEAN"
+  ],
+  "author": "Dhiraj Patra",
+  "license": "GNU General License",
+  "dependencies": {
+    "express": "~4.13.4",
+    "body-parser": "~1.15.0",
+    "mongoose": "~4.4.12"
+  }
+}
