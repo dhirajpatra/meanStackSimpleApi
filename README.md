@@ -27,7 +27,7 @@ http://localhost:8080/ [GET]
 http://localhost:8080/users [GET]
 
 http://localhost:8080/users [POST] 
-Request parameter [URL encoded form]: {"user_email" : "testee@fsfd.com", "user_password": "test1313", "user_phone":"4646644644"}
+Request parameter [URL encoded form]: {"user_email" : "testee@fsfd.com", "user_password": "test1313", "user_phone":"4646644644", "address1":"test address", "address2":"test address 2","pin":"78444", "country":"test country"}
 
 http://localhost:8080/users/[id] [GET]
 
