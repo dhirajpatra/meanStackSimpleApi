@@ -1,6 +1,9 @@
 # meanStackSimpleApi
 Simple REST API creation by MEAN stack [MongoDB, Nodejs Express lib, Angular Js, Node.js]
-#now AngularJs not added but subsequent version will have updated application 
+
+Now multiple collection and JOIN data fetch and save.
+
+<small>now AngularJs not added but subsequent version will have updated application</small>
 
 Steps to be followed to run the application:
 
@@ -11,8 +14,6 @@ or
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
 
 https://chrisbitting.com/2014/06/16/local-web-server-for-testing-development-using-node-js-and-http-server/
-
-http://www.hongkiat.com/blog/node-js-server-side-javascript/
 
 2. Create a folder for your application
 3. # npm install
