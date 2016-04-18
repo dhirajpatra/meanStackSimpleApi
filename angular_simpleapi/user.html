@@ -12,7 +12,8 @@
   <body ng-app="myApp">
     
     <div class="main" ng-controller="MainController">
-        <div>          
+        <div class="dislikes">  
+            <h2>User Details</h2>
             <label>Email:</label><input type="text" ng-model="email"><br>
             <label>Phone:</label><input type="text" ng-model="phone"><br>
             <label>Password:</label><input type="text" ng-model="password"><br>
@@ -21,11 +22,11 @@
              <label>Pin:</label><input type="text" ng-model="pin"><br>
              <label>Country:</label><input type="text" ng-model="country"><br>
           <hr>
-          <p>Hello {{email}}!</p>
-            <input type="button" value="call api" ng-click="createuser()">
+          
+            <input type="button" value="Save User Into Server" ng-click="createuser()">
         </div>
 			 <div>
-        <p>Response from server: <b>{{data}}</b></p>
+        <p>Response from server: <b>{{data.message}}</b></p>
        </div>
     <!-- Modules -->
     <script src="js/app.js"></script>

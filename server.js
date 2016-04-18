@@ -82,7 +82,7 @@ router.route("/users")
                         response = {"error" : true,"message" : err + "Error adding user data"};
                     //return handleError(err);
                     } else {
-                        response = {"error" : false,"message" : "User added successfully"};                        
+                        response = {"error" : false,"message" : response + "User added successfully"};                        
                     }                    
                     
                 });
