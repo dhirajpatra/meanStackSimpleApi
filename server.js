@@ -2,7 +2,6 @@ var express     =   require("express");
 var app         =   express();
 var bodyParser  =   require("body-parser");
 var userModel    =   require("./models/user");
-//var addressModel  =  require("./models/address");
 var router      =   express.Router();
 
 // user schema
@@ -28,7 +27,7 @@ router.route("/users")
                 response = {"error" : false,"message" : data};
             }
             res.json(response); 
-        }*/).populate('addresses _id').exec(function(err,data) {
+        }*/).populate('addresses').exec(function(err,data) {
               if(err) { 
                 response = {"error" : true,"message" : "Error fetching data"};
                 } else { 

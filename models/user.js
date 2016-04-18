@@ -7,15 +7,6 @@ mongoose.connect('mongodb://localhost:27017/simpleapi');
 // create instance of Schema
 var mongoSchema =   mongoose.Schema;
 // create schema
-var userSchema  = new mongoSchema({
-    //"_id"     : { type: Number },
-    "user_email" : { type: String, required: true, unique: true },
-    "user_password" : { type: String, required: true },
-    "user_phone" : { type: String, required: true, unique:true },
-    "address_id" : { type: mongoSchema.Types.ObjectId, ref: 'Address' }
-});
-// create model if not exists.
-
 // create model if not exists.
 var addressSchema = new mongoSchema({
     //"_id"     : { type: Number },
@@ -25,17 +16,24 @@ var addressSchema = new mongoSchema({
     "country" : { type: String, required: true }
 });
 
-// the schema is useless so far
-// we need to create a model using it
-//var Address = mongoose.model('addresses', userSchema);
+var addressModel = mongoose.model('addresses', addressSchema);
+
+var userSchema  = new mongoSchema({
+    //"_id"     : { type: Number },
+    "user_email" : { type: String, required: true, unique: true },
+    "user_password" : { type: String, required: true },
+    "user_phone" : { type: String, required: true, unique:true },
+    "address_id" : { type: mongoSchema.Types.ObjectId, ref: addressModel }
+});
+// create model if not exists.
+var userModel = mongoose.model('users', userSchema);
+
 
 // the schema is useless so far
 // we need to create a model using it
-//var User = mongoose.model('users', userSchema);
-
-var models = {
-    User : mongoose.model('users', userSchema),
-    Address : mongoose.model('addresses', addressSchema)
+var models = {    
+    Address : addressModel,
+    User : userModel
 };
 
 // make this available to our users in our Node applications
