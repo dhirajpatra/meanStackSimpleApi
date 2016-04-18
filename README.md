@@ -12,8 +12,8 @@ or
 1. Follow the steps to install and ready MEAN stack on NPM
 
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
-
 https://chrisbitting.com/2014/06/16/local-web-server-for-testing-development-using-node-js-and-http-server/
+http://mongoosejs.com/
 
 2. Create a folder for your application
 3. # npm install

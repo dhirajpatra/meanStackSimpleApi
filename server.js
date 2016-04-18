@@ -28,7 +28,7 @@ router.route("/users")
                 response = {"error" : false,"message" : data};
             }
             res.json(response); 
-        }*/).populate('Address _id').exec(function(err,data) {
+        }*/).populate('addresses _id').exec(function(err,data) {
               if(err) { 
                 response = {"error" : true,"message" : "Error fetching data"};
                 } else { 
@@ -73,9 +73,8 @@ router.route("/users")
                     //return handleError(err);
                     } else {
                         response = {"error" : false,"message" : "User added successfully"};                        
-                    }
+                    }                    
                     
-                    res.json(response);
                 });
             }
             res.json(response);
