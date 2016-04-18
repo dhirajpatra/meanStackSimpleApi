@@ -27,7 +27,7 @@ router.route("/users")
                 response = {"error" : false,"message" : data};
             }
             res.json(response); 
-        }*/).populate('addresses').exec(function(err,data) {
+        }*/).populate('address_id').exec(function(err,data) {
               if(err) { 
                 response = {"error" : true,"message" : "Error fetching data"};
                 } else { 

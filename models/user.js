@@ -23,7 +23,7 @@ var userSchema  = new mongoSchema({
     "user_email" : { type: String, required: true, unique: true },
     "user_password" : { type: String, required: true },
     "user_phone" : { type: String, required: true, unique:true },
-    "address_id" : { type: mongoSchema.Types.ObjectId, ref: addressModel }
+    "address_id" : { type: mongoSchema.Types.ObjectId, ref: 'addresses' }
 });
 // create model if not exists.
 var userModel = mongoose.model('users', userSchema);
