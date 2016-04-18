@@ -1,9 +1,9 @@
 # meanStackSimpleApi
-Simple REST API creation by MEAN stack [MongoDB, Nodejs Express lib, Angular Js, Node.js]
+Simple yes powerful cross domain REST API creation by MEAN stack [MongoDB, Nodejs Express lib, Angular Js, Node.js]
 
 Now multiple collection and JOIN data fetch and save.
 
-<small>now AngularJs not added but subsequent version will have updated application</small>
+<small>now AngularJs front end added with cros domain API call</small>
 
 Steps to be followed to run the application:
 
