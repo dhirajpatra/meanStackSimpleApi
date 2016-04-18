@@ -1,7 +1,6 @@
 app.controller('MainController', ['$scope','$http', 
 
 function($scope, $http) {
-    var result;
     
     // common http API related directives
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -12,14 +11,13 @@ function($scope, $http) {
     // for fetchallusers API
     $scope.fetchallusers = function(){
         //console.log("i am here ");        
-        result = $http.get($scope.url + "users").success(function(data, status){
-            result = (data);
-            console.log(result);
+        $http.get($scope.url + "users").success(function(data, status){
+            $scope.users = data.message;
+            //console.log($scope.users);
         }).error(function(data, status){
             $scope.status = status;
             console.log(status);
         });
-        return result;
         
     }
 

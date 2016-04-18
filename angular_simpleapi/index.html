@@ -12,12 +12,21 @@
   <body>
     
     <div class="main" ng-controller="MainController">
-        <input type="button" value="Fetch All Users" ng-click="fetchallusers()"/>
-       <!--<ul>
-        <li ng-repeat="student in students">
-           {{student.name}}
-           </li> 
-       </ul>-->
+        <input type="button" value="Click Here to Fetch All Users" ng-click="fetchallusers()"/>
+       <ul>
+        <li ng-repeat="user in users">
+           <ul>User Details <hr>
+                <li><label>Email : </label>{{user.user_email}}</li>
+                <li><label>Phone : </label>{{user.user_phone}}</li>
+                <li><label>Password : </label>{{user.user_password}}</li>
+                <li><label>Address1 : </label>{{user.address_id.address1}}</li>
+                <li><label>Address2 : </label>{{user.address_id.address2}}</li>
+                <li><label>Pin : </label>{{user.address_id.pin}}</li>
+                <li><label>Country : </label>{{user.address_id.country}}</li>
+               <br clear="all">
+            </ul>
+        </li> 
+       </ul>
         
     </div>
 	
