@@ -25,9 +25,11 @@ API URL:
 http://localhost:8080/ [GET]
 
 http://localhost:8080/users [GET]
+From AngularJs html front end : http://localhost/pathofproject/angular_simpleapi/
 
 http://localhost:8080/users [POST] 
 Request parameter [URL encoded form]: {"user_email" : "testee@fsfd.com", "user_password": "test1313", "user_phone":"4646644644", "address1":"test address", "address2":"test address 2","pin":"78444", "country":"test country"}
+From AngularJs html front end : http://localhost/pathofproject/angular_simpleapi/user.html
 
 http://localhost:8080/users/[id] [GET]
 
