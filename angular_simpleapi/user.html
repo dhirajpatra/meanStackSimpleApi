@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <!--link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" /-->
+    <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
 
     <!-- Include the AngularJS library -->
@@ -10,10 +10,10 @@
 
   </head>
   <body ng-app="myApp">
-    
+    <h1>Users application by MEAN</h1>
     <div class="main" ng-controller="MainController">
-        <div class="dislikes">  
-            <h2>User Details</h2>
+        <div class="container">  
+            <h2>Add User Details</h2>            
             <label>Email:</label><input type="text" ng-model="email"><br>
             <label>Phone:</label><input type="text" ng-model="phone"><br>
             <label>Password:</label><input type="text" ng-model="password"><br>
@@ -26,7 +26,7 @@
             <input type="button" value="Save User Into Server" ng-click="createuser()">
         </div>
 			 <div>
-        <p>Response from server: <b>{{data.message}}</b></p>
+        <p class="row">Response from server: <b>{{data.message}}</b></p>
        </div>
     <!-- Modules -->
     <script src="js/app.js"></script>

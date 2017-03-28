@@ -1,99 +1,45 @@
+// require all libs
 var express     =   require("express");
+// create obj
 var app         =   express();
+
 var bodyParser  =   require("body-parser");
 var userModel    =   require("./models/user");
 var router      =   express.Router();
 
+// http server
 var http = require('http');
 
+// cross domain access and update the data via api
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 }
-
+// allowing cross domain process
 app.use(allowCrossDomain);
 
-// user schema
+// user schema of user model
 var userDB  = userModel.User;
-// address schema
+
+// address schema of user model
 var addressDB = userModel.Address;
 
+// parsing api request
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
 
-router.get("/",function(req,res){ //res.json(userDB + addressDB);
+// home
+router.get("/meanstacksimpleapi/",function(req,res){ //res.json(userDB + addressDB);
     res.json({"error" : false,"message" : "Hello World"});
 });
 
-router.route("/users")
-    .get(function(req,res){
-        var response = {}; 
-        userDB.find({}/*,function(err,data){
-        // Mongo command to fetch all data from collection.
-            if(err) { 
-                response = {"error" : true,"message" : "Error fetching data"};
-            } else { 
-                response = {"error" : false,"message" : data};
-            }
-            res.json(response); 
-        }*/).populate('address_id').exec(function(err,data) {
-              if(err) { 
-                response = {"error" : true,"message" : "Error fetching data"};
-                } else { 
-                    response = {"error" : false,"message" : data};
-                }
-                res.json(response);
-            });
-    })
-    .post(function(req,res){  
-        var response = {};
-        // fetch email and password from REST request.
-        // Add strict validation when you use this in Production.
-        // insert addresses for this user
-        var addDB = new userModel.Address;
-
-        addDB.address1 = req.body.address1;
-        addDB.address2 = req.body.address2;
-        addDB.pin = req.body.pin;
-        addDB.country = req.body.country;
-    
-        addDB.save(function(err){ 
-        // save() will run insert() command of MongoDB.
-        // it will add new data in collection.
-            if(err) {
-                response = {"error" : true,"message" : err + "Error adding user data"};
-                //return handleError(err);
-            } else {
-                response = {"error" : false,"message" : "Address added successfully"};
-                
-                //the new user object
-                var usrDB = new userModel.User;
-                
-                usrDB.user_email = req.body.user_email; 
-                // Hash the password using SHA1 algorithm.
-                usrDB.user_password =  req.body.user_password;
-                usrDB.user_phone =  req.body.user_phone;                
-                usrDB.address_id = addDB._id; 
-                
-                usrDB.save(function(err){
-                    if(err) {
-                        response = {"error" : true,"message" : err + "Error adding user data"};
-                    //return handleError(err);
-                    } else {
-                        response = {"error" : false,"message" : response + "User added successfully"};                        
-                    }                    
-                    
-                });
-            }
-            res.json(response);
-        });
-    });
-
+// routing 
    router.route("/users/:id")
     .get(function(req,res){
         var response = {};
+       console.log(req.params.id);
         userDB.findById(req.params.id/*,function(err,data){
         // This will run Mongo Query to fetch data based on ID.
             if(err) {
@@ -163,7 +109,79 @@ router.route("/users")
                 });
             }
         });
-    })
+    });
+
+// route /users by get request
+router.route("/users")
+    .get(function(req,res){
+        var response = {}; 
+        // mongodb / mongoose command to fetch data from collections
+        // also get related collection data
+        userDB.find({}/*,function(err,data){
+        // Mongo command to fetch all data from collection.
+            if(err) { 
+                response = {"error" : true,"message" : "Error fetching data"};
+            } else { 
+                response = {"error" : false,"message" : data};
+            }
+            res.json(response); 
+        }*/).populate('address_id').exec(function(err,data) {
+              if(err) { 
+                response = {"error" : true,"message" : "Error fetching data"};
+                } else { 
+                    response = {"error" : false,"message" : data};
+                }
+                // json response
+                res.json(response);
+            });
+    }) // post to save data
+    .post(function(req,res){  
+        var response = {};
+        // fetch email and password from REST request.
+        // Add strict validation when you use this in Production.
+        // insert addresses for this user
+        var addDB = new userModel.Address;
+
+        // takes all parameters to save
+        addDB.address1 = req.body.address1;
+        addDB.address2 = req.body.address2;
+        addDB.pin = req.body.pin;
+        addDB.country = req.body.country;
+    
+        // saving into mongodb
+        addDB.save(function(err){ 
+        // save() will run insert() command of MongoDB.
+        // it will add new data in collection.
+            if(err) {
+                response = {"error" : true,"message" : err + "Error adding user data"};
+                //return handleError(err);
+            } else {
+                response_msg = "Address added successfully";
+                
+                //the new user object
+                var usrDB = new userModel.User;
+                
+                usrDB.user_email = req.body.user_email; 
+                // Hash the password using SHA1 algorithm.
+                usrDB.user_password =  req.body.user_password;
+                usrDB.user_phone =  req.body.user_phone;                
+                usrDB.address_id = addDB._id; 
+                
+                usrDB.save(function(err){
+                    if(err) {
+                        response = {"error" : true,"message" : " Error adding user data"};
+                    //return handleError(err);
+                    } else {
+                        response = {"error" : false,"message" : response_msg + " User added successfully"};                        
+                    }                    
+                    
+                });
+            }
+            res.json(response);
+        });
+    });
+
+
 
 app.use('/',router);
 
